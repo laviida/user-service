@@ -1,16 +1,17 @@
 const express = require('express');
 const router = express.Router();
 const controller = require(`../controllers/userController`);
+const { checkToken } = require(`../middlewares/middlewares`);
 
-router.get('/user/:id', [], controller.getUser);
+router.get('/user/:id', [checkToken], controller.getUser);
 
-router.get('/users', [], controller.listUsers);
+router.get('/list', [checkToken], controller.listUsers);
 
-router.post('/user', [], controller.saveUser);
+router.post('/new', [checkToken], controller.saveUser);
 
-router.put('/user/:id', [], controller.updateUser);
+router.put('/user/:id', [checkToken], controller.updateUser);
 
-router.delete('/user/:id', [], controller.deleteUser);
+router.delete('/user/:id', [checkToken], controller.deleteUser);
 
 
 module.exports = router;

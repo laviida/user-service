@@ -1,4 +1,4 @@
-const mongoose = require("../database/database")
+const { mongoose } = require("../database/database")
 const mongoosePaginate = require('mongoose-paginate-v2');
 
 const UserSchema = new mongoose.Schema(
@@ -15,7 +15,5 @@ UserSchema.plugin(mongoosePaginate);
 
 
 const userModel = mongoose.model('User', UserSchema);
-
-userModel.paginate().then({});
 
 module.exports = userModel;
