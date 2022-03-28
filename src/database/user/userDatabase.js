@@ -8,7 +8,7 @@ exports.create = async (name, surname, email, password) => {
 
 exports.update = async (id, updatedUser) => await User.findByIdAndUpdate(id, updatedUser);
 
-exports.delete = async (id) => await User.findByIdAndDelete(id);
+exports.delete = async (ids) => await User.deleteMany({ _id: { $in: ids } })
 
 exports.get = async (id) => await User.findById(id);
 

@@ -11,7 +11,7 @@ router.post('/new', [checkToken], controller.saveUser);
 
 router.put('/user/:id', [checkToken], controller.updateUser);
 
-router.delete('/user/:id', [checkToken], controller.deleteUser);
+router.delete('/deleteUsers', [checkToken], controller.deleteUsers);
 
 
 module.exports = router;

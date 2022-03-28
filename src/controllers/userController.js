@@ -15,7 +15,7 @@ exports.getUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
     try {
         const { id } = req.params;
-        const updatedUser = req.body;
+        const updatedUser = req.body.user;
         const user = await userBusiness.updateUser(id, updatedUser);
         res.json(response.success({ user }))
     } catch (error) {
@@ -43,10 +43,10 @@ exports.listUsers = async (req, res) => {
     }
 }
 
-exports.deleteUser = async (req, res) => {
+exports.deleteUsers = async (req, res) => {
     try {
-        const { id } = req.params;
-        await userBusiness.deleteUser(id);
+        const { ids } = req.body;
+        await userBusiness.deleteUsers(ids);
         res.json(response.success({}))
     } catch (error) {
         res.status(error.status ?? HTTP_STATUS_CODES.INTERNAL_SERVER).json(response.error(error.name, error.message, error.stack))
